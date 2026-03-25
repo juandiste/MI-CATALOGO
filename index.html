@@ -3,154 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baires.elecronic.import - Catálogo</title>
+    <title>Baires.electronic.import | Hogar y Tecnología</title>
     <style>
-        :root { 
-            --primary: #003366; 
-            --accent: #25d366; 
-            --bg: #f0f2f5; 
-            --text: #333; 
-        }
+        :root { --primary: #1a1a1a; --accent: #25d366; --bg: #f8f9fa; --blue: #0056b3; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg); margin: 0; color: #333; }
         
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; color: var(--text); }
+        /* Header Moderno */
+        header { background: var(--primary); color: white; padding: 25px 15px; text-align: center; border-bottom: 4px solid var(--blue); }
+        header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 1px; }
+        header p { margin: 5px 0 0; font-size: 0.85rem; opacity: 0.8; }
+
+        /* Categorías */
+        .category-header { background: #fff; padding: 15px 20px; font-weight: bold; color: var(--blue); border-bottom: 1px solid #eee; margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+
+        /* Grilla */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 12px; padding: 12px; }
         
-        /* Header Personalizado */
-        header { 
-            background: var(--primary); 
-            color: white; 
-            padding: 25px 15px; 
-            text-align: center; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
-        }
-        header h1 { margin: 0; font-size: 1.6rem; letter-spacing: 1px; }
-        header p { margin: 5px 0 0; opacity: 0.8; font-size: 0.9rem; }
+        .product { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; border: 1px solid #eee; }
+        
+        .img-placeholder { width: 100%; aspect-ratio: 1/1; background: #fdfdfd; display: flex; align-items: center; justify-content: center; position: relative; }
+        .img-placeholder img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        
+        .info { padding: 10px; text-align: center; flex-grow: 1; }
+        .info h3 { font-size: 0.8rem; margin: 0 0 10px; color: #444; height: 38px; overflow: hidden; line-height: 1.2; }
+        
+        .btn-wa { background: var(--blue); color: white; text-decoration: none; font-size: 0.7rem; padding: 8px; border-radius: 4px; font-weight: bold; display: block; }
 
-        /* Contenedor de Productos */
-        .catalog { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
-            gap: 15px; 
-            padding: 20px; 
-            max-width: 1000px; 
-            margin: auto; 
-        }
-
-        /* Tarjeta de Producto (Estilo Megaelectro) */
-        .product-card { 
-            background: white; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-            display: flex; 
-            flex-direction: column;
-            transition: transform 0.2s;
-        }
-        .product-card:active { transform: scale(0.98); }
-
-        .img-container {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-bottom: 1px solid #eee;
-        }
-        .product-card img { width: 90%; object-fit: contain; }
-
-        .info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .info h3 { margin: 0; font-size: 0.85rem; color: var(--primary); height: 40px; overflow: hidden; }
-        .info p { font-size: 0.7rem; color: #666; margin: 8px 0; line-height: 1.2; }
-
-        /* Botón de consulta por producto */
-        .btn-check { 
-            background: #f8f9fa; 
-            border: 1px solid var(--primary); 
-            color: var(--primary); 
-            padding: 8px; 
-            border-radius: 6px; 
-            font-size: 0.75rem; 
-            font-weight: bold; 
-            text-decoration: none; 
-            text-align: center;
-        }
-
-        /* Botón Flotante Principal */
-        .wa-float { 
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            background: var(--accent); 
-            color: white; 
-            padding: 15px 20px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            z-index: 100; 
-        }
+        /* WhatsApp Flotante */
+        .wa-float { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); text-decoration: none; z-index: 1000; font-size: 24px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Baires.elecronic.import</h1>
-    <p>Importación Directa de Tecnología y Energía Solar</p>
+    <h1>Baires.electronic.import</h1>
+    <p>Calidad en Artículos para el Hogar y Electrónica</p>
 </header>
 
-<div class="catalog">
-    <div class="product-card">
-        <div class="img-container">
-            <img src="https://megaelectro.com.ar/wp-content/uploads/2023/06/Inversor-Must-3kw.jpg" alt="Inversor Must">
-        </div>
+<div class="category-header">📺 TV Y AUDIO</div>
+<div class="grid">
+    <div class="product">
+        <div class="img-placeholder"><img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=300&auto=format&fit=crop" alt="Smart TV"></div>
         <div class="info">
-            <h3>Inversor Cargador Must 3KW 24V 60A</h3>
-            <p>Onda senoidal pura, ideal para sistemas aislados.</p>
-            <a href="https://wa.me/5491136735577?text=Hola!%20Me%20interesa%20el%20Inversor%20Must%203KW" class="btn-check">Consultar Stock</a>
+            <h3>Smart TV 50" 4K UHD Ultra Slim</h3>
+            <a href="https://wa.me/5491136735577?text=Consulta:%20Smart%20TV%2050" class="btn-wa">CONSULTAR</a>
         </div>
     </div>
-
-    <div class="product-card">
-        <div class="img-container">
-            <img src="https://megaelectro.com.ar/wp-content/uploads/2023/06/Panel-Solar-450w.jpg" alt="Panel Solar">
-        </div>
+    <div class="product">
+        <div class="img-placeholder"><img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=300&auto=format&fit=crop" alt="Parlante"></div>
         <div class="info">
-            <h3>Panel Solar Monocristalino 455W Perc</h3>
-            <p>Alta eficiencia para generación de energía domiciliaria.</p>
-            <a href="https://wa.me/5491136735577?text=Hola!%20Me%20interesa%20el%20Panel%20Solar%20455W" class="btn-check">Consultar Stock</a>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="img-container">
-            <img src="https://megaelectro.com.ar/wp-content/uploads/2023/06/Bateria-Litio-Pylontech.jpg" alt="Bateria Litio">
-        </div>
-        <div class="info">
-            <h3>Batería Litio Pylontech US3000C 3.5kWh</h3>
-            <p>Almacenamiento de larga duración con tecnología LiFePO4.</p>
-            <a href="https://wa.me/5491136735577?text=Hola!%20Me%20interesa%20la%20Bateria%20Pylontech" class="btn-check">Consultar Stock</a>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <div class="img-container">
-            <img src="https://megaelectro.com.ar/wp-content/uploads/2022/10/Termotanque-Solar-200lts.jpg" alt="Termotanque">
-        </div>
-        <div class="info">
-            <h3>Termotanque Solar 200 Lts Acero Inoxidable</h3>
-            <p>Sistema de calentamiento de agua sustentable.</p>
-            <a href="https://wa.me/5491136735577?text=Hola!%20Me%20interesa%20el%20Termotanque%20Solar" class="btn-check">Consultar Stock</a>
+            <h3>Parlante Bluetooth Potenciado RGB</h3>
+            <a href="https://wa.me/5491136735577?text=Consulta:%20Parlante%20Bluetooth" class="btn-wa">CONSULTAR</a>
         </div>
     </div>
 </div>
 
-<a href="https://wa.me/5491136735577?text=Hola!%20Quiero%20hacer%20una%20consulta%20general" class="wa-float" target="_blank">
-    <span>💬 WhatsApp Directo</span>
-</a>
+<div class="category-header">❄️ REFRIGERACIÓN Y LAVADO</div>
+<div class="grid">
+    <div class="product">
+        <div class="img-placeholder"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=300&auto=format&fit=crop" alt="Lavarropas"></div>
+        <div class="info">
+            <h3>Lavarropas Automático 8kg 1200RPM</h3>
+            <a href="https://wa.me/5491136735577?text=Consulta:%20Lavarropas%208kg" class="btn-wa">CONSULTAR</a>
+        </div>
+    </div>
+    <div class="product">
+        <div class="img-placeholder"><img src="https://images.unsplash.com/photo-1571175432248-ef024738398e?q=80&w=300&auto=format&fit=crop" alt="Heladera"></div>
+        <div class="info">
+            <h3>Heladera No Frost con Freezer Inox</h3>
+            <a href="https://wa.me/5491136735577?text=Consulta:%20Heladera%20No%20Frost" class="btn-wa">CONSULTAR</a>
+        </div>
+    </div>
+</div>
+
+<div class="category-header">☕ COCINA Y PEQUEÑOS ELECTRO</div>
+<div class="grid">
+    <div class="product">
+        <div class="img-placeholder"><img src="https://images.unsplash.com/photo-1574313180493-94c63283f3e7?q=80&w=300&auto=format&fit=crop" alt="Cafetera"></div>
+        <div class="info">
+            <h3>Cafetera Express Programable</h3>
+            <a href="https://wa.me/5491136735577?text=Consulta:%20Cafetera%20Express" class="btn-wa">CONSULTAR</a>
+        </div>
+    </div>
+    <div class="product">
+        <div class="img-placeholder"><img src="https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?q=80&w=300&auto=format&fit=crop" alt="Aire"></div>
+        <div class="info">
+            <h3>Aire Acondicionado Split 3000 Frio/Calor</h3>
+            <a href="https://wa.me/5491136735577?text=Consulta:%20Aire%20Acondicionado" class="btn-wa">CONSULTAR</a>
+        </div>
+    </div>
+</div>
+
+<a href="https://wa.me/5491136735577" class="wa-float" target="_blank">📲</a>
 
 </body>
 </html>
