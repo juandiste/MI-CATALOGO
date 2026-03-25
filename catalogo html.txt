@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Online</title>
+    <style>
+        :root { --blue: #004a99; --light: #f8f9fa; --wa: #25d366; }
+        body { font-family: Arial, sans-serif; background: var(--light); margin: 0; padding: 0; text-align: center; }
+        header { background: var(--blue); color: white; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .container { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .card img { width: 100%; border-radius: 8px; height: 200px; object-fit: cover; }
+        .card h3 { margin: 15px 0 5px; color: var(--blue); }
+        .card p { font-size: 14px; color: #555; line-height: 1.4; }
+        .btn-wa { background: var(--wa); color: white; text-decoration: none; padding: 15px 25px; border-radius: 50px; font-weight: bold; position: fixed; bottom: 20px; right: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 10px; z-index: 1000; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Catálogo de Productos</h1>
+    <p>Tecnología y Energía al mejor precio</p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80&w=400" alt="Inversor">
+        <h3>Inversor de Corriente</h3>
+        <p>Alta eficiencia para sistemas solares y respaldo de energía.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&q=80&w=400" alt="Cargador">
+        <h3>Cargador de Baterías</h3>
+        <p>Carga inteligente para vehículos eléctricos y movilidad.</p>
+    </div>
+</div>
+
+<a href="https://wa.me/5491136735577?text=Hola!%20Me%20interesa%20un%20producto%20de%20tu%20catalogo" class="btn-wa" target="_blank">
+    <span>Consultar por WhatsApp</span>
+</a>
+
+</body>
+</html>
