@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baires.electronic.import | Catálogo</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
-            --fondo-oscuro: #080101;
-            --acento-azul: #0056b3;
-            --texto-claro: #f8f3f3;
-            --gris-tarjeta: #151515;
+            --fondo: #080101;
+            --tarjeta: #151515;
+            --acento: #0056b3;
+            --whatsapp: #25d366;
+            --texto: #f8f3f3;
         }
 
         body {
-            background-color: var(--fondo-oscuro);
-            color: var(--texto-claro);
+            background-color: var(--fondo);
+            color: var(--texto);
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            margin: 0; padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Header Principal */
         header {
             background-color: #1a1a1a;
             padding: 20px;
@@ -31,163 +31,137 @@
             border-bottom: 2px solid #333;
         }
 
-        .logo-container img {
-            width: 120px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
+        .logo { width: 80px; border-radius: 10px; margin-bottom: 10px; }
 
-        h1 {
-            font-size: 1.4rem;
-            letter-spacing: 2px;
-            margin: 0;
-            text-transform: uppercase;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; flex: 1; }
 
-        /* Sección de Búsqueda y Navegación */
-        .nav-container {
-            padding: 30px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, #1a1a1a 0%, var(--fondo-oscuro) 100%);
-        }
-
-        .search-box {
-            width: 100%;
-            max-width: 500px;
+        /* Buscador */
+        .search-container { text-align: center; margin-bottom: 25px; }
+        #buscador {
+            width: 90%; max-width: 400px;
             padding: 12px 20px;
             border-radius: 25px;
             border: 1px solid #444;
             background: #222;
             color: white;
-            font-size: 1rem;
-            margin-bottom: 20px;
             outline: none;
+            font-size: 1rem;
         }
 
-        .btn-catalogo {
-            background-color: var(--acento-azul);
-            color: white;
-            padding: 12px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-
-        .btn-catalogo:hover {
-            transform: scale(1.05);
-        }
-
-        /* Grilla de Productos (Sin precios) */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .grid-productos {
+        /* Grilla */
+        #grilla {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 15px;
         }
 
-        .producto-card {
-            background: var(--gris-tarjeta);
-            border-radius: 15px;
-            padding: 15px;
+        .card {
+            background: var(--tarjeta);
+            border-radius: 12px;
+            padding: 12px;
             border: 1px solid #222;
+            display: flex;
+            flex-direction: column;
             transition: 0.3s;
         }
 
-        .producto-card:hover {
-            border-color: var(--acento-azul);
-        }
+        .card:hover { border-color: var(--acento); transform: translateY(-3px); }
 
-        .producto-img {
+        .card img {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 10px;
-            background: #222;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            background: #000;
+            border-radius: 8px;
         }
 
-        .producto-info h3 {
-            font-size: 1rem;
-            margin: 15px 0 10px 0;
+        .card h3 {
+            font-size: 0.85rem;
+            margin: 12px 0;
             height: 40px;
             overflow: hidden;
+            text-transform: uppercase;
+            color: #ccc;
         }
 
-        /* Botón de Consulta WhatsApp */
-        .btn-consulta {
-            display: block;
-            background: #25d366;
+        .btn-wa {
+            background: var(--whatsapp);
             color: white;
             text-decoration: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
+            padding: 8px;
+            border-radius: 6px;
             font-weight: bold;
-            margin-top: 10px;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: auto;
         }
 
-        /* Footer */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            font-size: 0.8rem;
-            color: #666;
+            padding: 20px;
+            font-size: 0.7rem;
+            color: #555;
+            border-top: 1px solid #222;
         }
 
         @media (max-width: 600px) {
-            .grid-productos {
-                grid-template-columns: 1fr 1fr; /* Dos columnas en móvil */
-                gap: 10px;
-            }
+            #grilla { grid-template-columns: 1fr 1fr; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="https://cdn.catalog-store.link/55e2b5b45ddc3e759b1be34d66cabdcb_image.webp" alt="Logo Baires">
+<header>
+    <img src="https://cdn.catalog-store.link/55e2b5b45ddc3e759b1be34d66cabdcb_image.webp" class="logo">
+    <h2 style="margin:0; font-size: 1.2rem;">Baires.electronic.import</h2>
+</header>
+
+<div class="container">
+    <div class="search-container">
+        <input type="text" id="buscador" placeholder="¿Qué estás buscando?" onkeyup="filtrar()">
+    </div>
+
+    <div id="grilla">
         </div>
-        <h1>Baires.electronic.import</h1>
-    </header>
+</div>
 
-    <section class="nav-container">
-        <input type="search" class="search-box" placeholder="¿Qué estás buscando?">
-        <br>
-        <a href="#" class="btn-catalogo">VER CATEGORÍAS</a>
-    </section>
+<footer>
+    <p>Ituzaingó, Buenos Aires | Catálogo 2026</p>
+</footer>
 
-    <main class="container">
-        <div class="grid-productos">
-            
-            <div class="producto-card">
-                <img src="https://via.placeholder.com/300" class="producto-img" alt="Producto">
-                <div class="producto-info">
-                    <h3>Smart TV 50" 4K Ultra HD</h3>
-                    <a href="https://wa.me/541136735577?text=Hola!%20Me%20interesa%20el%20Smart%20TV%2050" class="btn-consulta">Consultar Disponibilidad</a>
-                </div>
+<script>
+    // --- LISTADO DE TUS PRODUCTOS ---
+    // Agregá o editá acá. 'n' es el nombre, 'i' es el nombre de la foto en tu GitHub.
+    const productos = [
+        { n: "Aire BGH Inverter 3650W F/C", i: "aire-bgh.jpg" },
+        { n: "Aire Philco 3550W Inverter Eco Plus", i: "aire-philco.jpg" },
+        { n: "Parlante JBL Charge 6", i: "jbl-charge.jpg" },
+        { n: "Smart TV Global 50\" Android TV", i: "tv-50.jpg" },
+        { n: "Smart TV Global 43\" Android TV", i: "tv-43.jpg" },
+        { n: "Lavarropas Philco 11kg Inverter Silver", i: "lavarropas.jpg" }
+    ];
+
+    const nroWA = "541136735577";
+
+    function render(lista) {
+        const grilla = document.getElementById('grilla');
+        grilla.innerHTML = lista.map(p => `
+            <div class="card">
+                <img src="${p.i}" alt="${p.n}">
+                <h3>${p.n}</h3>
+                <a href="https://wa.me/${nroWA}?text=Hola! Me interesa: ${p.n}" target="_blank" class="btn-wa">Consultar</a>
             </div>
+        `).join('');
+    }
 
-            <div class="producto-card">
-                <img src="https://via.placeholder.com/300" class="producto-img" alt="Producto">
-                <div class="producto-info">
-                    <h3>Lavarropas Automático 8kg</h3>
-                    <a href="https://wa.me/541136735577?text=Hola!%20Me%20interesa%20el%20Lavarropas" class="btn-consulta">Consultar Disponibilidad</a>
-                </div>
-            </div>
+    function filtrar() {
+        const txt = document.getElementById('buscador').value.toLowerCase();
+        const f = productos.filter(p => p.n.toLowerCase().includes(txt));
+        render(f);
+    }
 
-            </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Baires.electronic.import - Ituzaingó, Buenos Aires</p>
-    </footer>
+    render(productos);
+</script>
 
 </body>
 </html>
